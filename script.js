@@ -3,6 +3,7 @@ let userInput = 16;
 // I could replace the 16 by a user define number in a input box, so the user can define grid size
 
 function makeGrid() {
+    if((userInput > 0 && userInput <101) && !isNaN(userInput)) {
     const tileSize = 960 / userInput;
     for (let i = 0; i < userInput**2; i++){
     const gridTile = document.createElement("div");
@@ -15,10 +16,15 @@ function makeGrid() {
         gridTile.style.backgroundColor = 'blue'; // could use a math.random to make it a random color
         });
     }
+    } else {
+        alert("Use a number!");
+    }
 }
 
 function clearGrid() {
-    gridTile.innerHTML = "";
+        const gridTile = document.createElement("div");
+
+    gridContainer.innerHTML = "";
 }
 
 makeGrid();
