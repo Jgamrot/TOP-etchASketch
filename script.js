@@ -15,7 +15,7 @@ function getRandomColor(){
     const v = 0.95;
     let r, g, b;
     const i = Math.floor(h*6);
-    const f = h * 6 - 1;
+    const f = h * 6 - i;
     const p = v * (1 - s);
     const q = v * (1 - f * s);
     const t = v * (1 - (1 - f) * s);
@@ -40,16 +40,19 @@ function makeGrid() {
     gridTile.style.height = `${tileSize}px`;
     gridContainer.appendChild(gridTile);
 
+    gridTile.interactionCount = 1;
+
+
     gridTile.addEventListener("mouseover", () => {
+        
         gridTile.style.backgroundColor = getRandomColor(); 
-        // could use a math.random to make it a random color
-        //I could but I've googled the golden ratio thing...
-        opacityLevel -= 0.1;
-        gridTile.style.opacity = opacityLevel;
-        if (opacityLevel <= 0) {
-          opacityLevel = 1;
-        }
+        const newOpacityLevel = 1 - (gridTile.interactionCount * 0.1);
+        gridTile.style.opacity = newOpacityLevel;
+        
+        gridTile.interactionCount++;
         });
+
+        
     }
     } else {
         alert("Use a number!");
