@@ -43,16 +43,25 @@ function makeGrid() {
     gridTile.interactionCount = 1;
 
 
-    gridTile.addEventListener("mouseover", () => {
-        
+   /* gridTile.addEventListener("mouseover", () => {
+        if (gridTile.interactionCount === 1) {
         gridTile.style.backgroundColor = getRandomColor(); 
+        } else {
         const newOpacityLevel = 1 - (gridTile.interactionCount * 0.1);
         gridTile.style.opacity = newOpacityLevel;
-        
+        }
         gridTile.interactionCount++;
         });
+         Keeping the if statement for now...*/
 
-        
+        gridTile.addEventListener("mouseover", () => {
+            gridTile.interactionCount === 1 
+            gridTile.style.backgroundColor = getRandomColor(); 
+            const newOpacityLevel = 1 - (gridTile.interactionCount * 0.1);
+            gridTile.style.opacity = newOpacityLevel;
+            gridTile.interactionCount++;
+            });
+                
     }
     } else {
         alert("Use a number!");
